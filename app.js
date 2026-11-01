@@ -7,6 +7,7 @@ import { connectDB } from "./src/config/database.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import categoryRoutes from "./src/routes/category.routes.js";
 import eventRoutes from "./src/routes/event.routes.js";
+import userRoutes from "./src/routes/user.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/events", eventRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "API de eventos funcionando" });
