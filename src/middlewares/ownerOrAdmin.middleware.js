@@ -1,6 +1,6 @@
 import Event from "../models/event.model.js";
 
-export const ownerMiddleware = async (req, res, next) => {
+export const ownerOrAdminMiddleware = async (req, res, next) => {
   try {
     // Buscamos en MongoDB el evento utilizando el ID que llega por los parámetros de la URL.
     const event = await Event.findById(req.params.id);
@@ -12,7 +12,7 @@ export const ownerMiddleware = async (req, res, next) => {
 
     // Convertimos los ObjectId a String para poder compararlos correctamente.
     // Comparamos si el ID del organizador del evento es igual al ID del usuario que está logueado.
-    const isOwner = event.organizer.toString() === req.user._id.toString();
+    const isOwner = event.organizer.toString() === req.user.id.toString();
 
     // Comprobamos si el usuario que inició sesión tiene el rol de administrador.
     const isAdmin = req.user.role === "admin";
