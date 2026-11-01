@@ -8,7 +8,7 @@ const onlyLetters = /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/;
 // Recibe un parámetro llamado required:
 // Si required es true, los campos deben cumplir las validaciones obligatorias.
 // Si required es false, los campos pueden omitirse durante una actualización.
-const profileRules = (required) => {
+export const profileRules = (required) => {
   // La función interna optionalIfUpdate sirve para reutilizar las mismas reglas sin tener que escribirlas dos veces.
   const optionalIfUpdate = (chain) => (required ? chain : chain.optional());
 
